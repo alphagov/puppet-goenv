@@ -1,0 +1,2 @@
+export GOENV_ROOT="<%= scope.lookupvar('goenv::params::goenv_root') -%>"
+[ -d "$GOENV_ROOT" ] && eval "$(goenv init -)"
