@@ -1,2 +1,5 @@
+2014-09-11 Release 0.0.2
+- Disable goenv install and uninstall commands
+
 2014-09-09 Release 0.0.1
 - Initial release based on rbenv module
