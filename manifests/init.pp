@@ -18,9 +18,7 @@ class goenv(
 ) {
   include goenv::params
 
-  package { 'goenv':
-    ensure => latest,
-  } ->
+  class { 'goenv::package': } ->
   file { '/etc/profile.d/goenv.sh':
     ensure  => present,
     mode    => '0755',
