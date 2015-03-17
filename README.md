@@ -2,13 +2,8 @@
 
 Manage a single system installation of goenv and Go versions.
 
-This uses system packages for *everything*.  It will never download builds from
-http://golang.org. This ensures that every install is consistent on every server.
-
-Examples of these packages can be seen at:
-
-- https://github.com/alphagov/packager
-- https://launchpad.net/~gds/+archive/govuk/+packages?field.name_filter=goenv
+Provides a `goenv::version` defined type that wraps the `goenv install` command
+to install a specific Go version.
 
 ## Example usage
 
@@ -20,6 +15,13 @@ include goenv
 Setup a version of Go:
 ```
 goenv::version { '1.2.2':
+}
+```
+
+Set the default Go version:
+```
+class { goenv:
+  global_version => '1.2.2',
 }
 ```
 

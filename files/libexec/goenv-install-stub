@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-cat <<EOT
-goenv install/uninstall are disabled on this system because
-individual Go versions are managed as system packages.
-EOT
-exit 1

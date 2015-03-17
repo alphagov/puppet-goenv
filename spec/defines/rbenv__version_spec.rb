@@ -9,18 +9,13 @@ describe 'goenv::version' do
   context 'Version 1.2.2' do
     let(:title) { '1.2.2' }
 
-    context 'go version' do
-      it {
-        should contain_package('goenv-go-1.2.2').with(
-          :ensure  => "latest",
-          :notify  => "Goenv::Rehash[1.2.2]",
-          :require => 'Class[Goenv]'
-        )
-      }
-    end
-
-    context 'rehash' do
-      it { should contain_goenv__rehash('1.2.2') }
-    end
+    it {
+      should contain_exec('install-goenv-go-1.2.2').with(
+        :command => "/usr/bin/goenv install 1.2.2",
+        :environment => "GOENV_ROOT=/usr/lib/goenv",
+        :creates => "/usr/lib/goenv/versions/1.2.2/bin/go",
+        :require => 'Class[Goenv]'
+      )
+    }
   end
 end
