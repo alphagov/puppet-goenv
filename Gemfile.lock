@@ -33,7 +33,7 @@ GEM
       json_pure
     inflecto (0.0.2)
     ipaddress (0.8.0)
-    json_pure (1.8.1)
+    json_pure (1.8.2)
     kwalify (0.7.2)
     metaclass (0.0.4)
     mime-types (1.25.1)
@@ -44,7 +44,7 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
     nokogiri (1.5.11)
-    puppet (3.2.4)
+    puppet (3.4.3)
       facter (~> 1.6)
       hiera (~> 1.0)
       rgen (~> 0.6.5)
@@ -93,7 +93,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  puppet (~> 3.2.0)
+  puppet (~> 3.4.0)
   puppet-lint
   puppet-syntax
   puppetlabs_spec_helper
