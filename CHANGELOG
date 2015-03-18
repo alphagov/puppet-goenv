@@ -1,3 +1,6 @@
+2015-03-18 Release 0.0.3
+- Install go versions using `goenv install` instead of relying on packages.
+
 2014-09-11 Release 0.0.2
 - Disable goenv install and uninstall commands
 

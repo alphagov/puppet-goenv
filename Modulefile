@@ -1,5 +1,5 @@
 name          'gdsoperations-goenv'
-version       '0.0.2'
+version       '0.0.3'
 source        'https://github.com/gds-operations/puppet-goenv'
 author        'Government Digital Service'
 license       'MIT'
