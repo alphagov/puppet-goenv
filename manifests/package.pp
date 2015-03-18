@@ -4,29 +4,25 @@
 # ununstall commands, to prevent conflicts with the package-managed versions.
 #
 class goenv::package {
+  include goenv::params
+
   package { 'goenv':
     ensure => latest,
   }
 
-  $libexec_dir = '/usr/lib/goenv/libexec'
-
-  exec { 'dpkg-divert_of_goenv-install':
-    command => "dpkg-divert --rename ${libexec_dir}/goenv-install",
-    creates => "${libexec_dir}/goenv-install.distrib",
-    require => Package['goenv'],
-  } ->
-  file { "${libexec_dir}/goenv-install":
-    source => 'puppet:///modules/goenv/libexec/goenv-install-stub',
-    mode   => '0755',
+  # Cleanup diverts that were created by v0.0.2 and earlier of this module
+  $libexec_dir = "${goenv::params::goenv_root}/libexec"
+  exec { 'cleanup-dpkg-divert_of_goenv-install':
+    command =>
+      "rm -f ${libexec_dir}/goenv-install && dpkg-divert --rename --remove ${libexec_dir}/goenv-install",
+    onlyif  => "test -f ${libexec_dir}/goenv-install.distrib",
+    before  => Package['goenv'],
+  }
+  exec { 'cleanup-dpkg-divert_of_goenv-uninstall':
+    command =>
+      "rm -f ${libexec_dir}/goenv-uninstall && dpkg-divert --rename --remove ${libexec_dir}/goenv-uninstall",
+    onlyif  => "test -f ${libexec_dir}/goenv-uninstall.distrib",
+    before  => Package['goenv'],
   }
 
-  exec { 'dpkg-divert_of_goenv-uninstall':
-    command => "dpkg-divert --rename ${libexec_dir}/goenv-uninstall",
-    creates => "${libexec_dir}/goenv-uninstall.distrib",
-    require => Package['goenv'],
-  } ->
-  file { "${libexec_dir}/goenv-uninstall":
-    source => 'puppet:///modules/goenv/libexec/goenv-install-stub',
-    mode   => '0755',
-  }
 }

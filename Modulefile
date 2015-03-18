@@ -5,5 +5,3 @@ author        'Government Digital Service'
 license       'MIT'
 summary       'System wide goenv'
 project_page  'https://github.com/gds-operations/puppet-goenv'
-
-dependency 'puppetlabs/stdlib', '>= 3.0.0'

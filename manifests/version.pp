@@ -12,13 +12,11 @@ define goenv::version () {
   include goenv::params
 
   $version = $title
-  $package_name = "goenv-go-${version}"
 
-  package { $package_name:
-    ensure  => latest,
-    notify  => Goenv::Rehash[$version],
-    require => Class['goenv'],
+  exec { "install-goenv-go-${version}":
+    command     => "${goenv::params::goenv_binary} install ${version}",
+    environment => "GOENV_ROOT=${goenv::params::goenv_root}",
+    creates     => "${goenv::params::goenv_root}/versions/${version}/bin/go",
+    require     => Class['goenv'],
   }
-
-  goenv::rehash { $version: }
 }
