@@ -1,7 +1,6 @@
 ---
-# Verify this with: http://lint.travis-ci.org/
 language: ruby
-# Delete dependency locks for matrix builds.
+sudo: false
 before_install: rm Gemfile.lock || true
 script: bundle exec rake test
 rvm:
