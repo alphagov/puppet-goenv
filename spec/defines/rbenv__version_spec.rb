@@ -9,7 +9,7 @@ describe 'goenv::version' do
     let(:title) { '1.2.2' }
 
     it {
-      should contain_exec('install-goenv-go-1.2.2').with(
+      is_expected.to contain_exec('install-goenv-go-1.2.2').with(
         :command => "/usr/bin/goenv install 1.2.2",
         :environment => "GOENV_ROOT=/usr/lib/goenv",
         :creates => "/usr/lib/goenv/versions/1.2.2/bin/go",

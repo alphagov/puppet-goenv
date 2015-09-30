@@ -8,7 +8,7 @@ describe 'goenv' do
 
   context 'when version is default(undef), remove the file' do
     it {
-      should contain_file(file_path).with_ensure('absent')
+      is_expected.to contain_file(file_path).with_ensure('absent')
     }
   end
 
@@ -18,7 +18,7 @@ describe 'goenv' do
     }}
 
     it {
-      should contain_file(file_path).with(
+      is_expected.to contain_file(file_path).with(
         :content => "1.2.3\n",
         :require => 'Goenv::Version[1.2.3]'
       )
