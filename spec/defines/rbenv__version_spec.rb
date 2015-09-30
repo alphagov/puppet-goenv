@@ -1,4 +1,3 @@
-require 'spec_helper'
 
 describe 'goenv::version' do
   let(:facts) {{

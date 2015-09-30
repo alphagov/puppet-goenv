@@ -1,4 +1,3 @@
-require 'spec_helper'
 
 # Focus on goenv::global proxy of goenv
 describe 'goenv' do
