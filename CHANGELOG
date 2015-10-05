@@ -1,3 +1,6 @@
+2015-10-05 Release 0.0.4
+- Add ensure => absent support to goenv::version
+
 2015-03-18 Release 0.0.3
 - Install go versions using `goenv install` instead of relying on packages.
 
