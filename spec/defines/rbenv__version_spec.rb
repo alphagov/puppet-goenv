@@ -18,4 +18,22 @@ describe 'goenv::version' do
       )
     }
   end
+
+  describe "removing a version" do
+    let(:title) { '1.2.1' }
+    let(:params) {{
+      "ensure" => "absent",
+    }}
+
+    it {
+      should contain_exec('uninstall-goenv-go-1.2.1').with(
+        :command => "/usr/bin/goenv uninstall 1.2.1",
+        :environment => "GOENV_ROOT=/usr/lib/goenv",
+        :onlyif => "test -d /usr/lib/goenv/versions/1.2.1",
+        :require => 'Class[Goenv]'
+      )
+    }
+
+    it { should_not contain_exec('install-goenv-go-1.2.1') }
+  end
 end
