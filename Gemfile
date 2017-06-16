@@ -6,7 +6,7 @@ source 'https://rubygems.org'
 gem 'puppet', ENV['PUPPET_VERSION'] || '~> 3.8.0'
 
 gem 'rake'
-gem 'puppet-lint'
+gem 'puppet-lint', '2.2.1'
 gem 'rspec', '~> 3.3'
 gem 'rspec-puppet', '~> 2.2'
 gem 'puppetlabs_spec_helper'

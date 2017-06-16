@@ -18,11 +18,11 @@ class goenv(
 ) {
   include goenv::params
 
-  class { 'goenv::package': } ->
-  file { '/etc/profile.d/goenv.sh':
+  class { 'goenv::package': }
+  -> file { '/etc/profile.d/goenv.sh':
     ensure  => present,
     mode    => '0755',
     content => template('goenv/etc/profile.d/goenv.sh.erb'),
-  } ->
-  class { 'goenv::global': }
+  }
+  -> class { 'goenv::global': }
 }
